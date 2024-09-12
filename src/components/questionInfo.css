@@ -1,0 +1,138 @@
+.text-box {
+    max-width: 300px;
+    min-width: 270px;
+    margin: 0 auto;
+    height: fit-content;
+    background-color: #f1f1f1;
+  }
+  
+  .text-box .box-container {
+    background-color: #ffffff;
+    border-radius: 8px 8px 21px 21px;
+    padding: 8px;
+    border: solid grey;
+
+  }
+  
+  .text-box textarea {
+    width: 95%;
+    height: 40px;
+    resize: none;
+    border-radius: 6px;
+    border: 0;
+    font-size: 13px;
+    outline: none;
+    caret-color: #0a84ff;
+  }
+  
+  .text-box .formatting {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto 1fr;
+  }
+  
+  .text-box .formatting button {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0;
+    outline: none;
+  }
+  
+  .text-box .formatting button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .text-box .formatting .send {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: #0a84ff;
+    margin: 0 0 0 auto;
+  }
+  
+  .text-box .formatting .send:hover {
+    background-color: #026eda;
+  }
+
+  .title {
+    border: solid black;
+    border-radius: 12px;
+    max-width: 300px;
+    min-width: 270px;
+    height: 40px;
+    position: relative;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #47484b;
+    margin: 0 auto;
+  }
+
+  #backBtn {
+    position: relative;
+    height: 50px;
+    padding: 0 30px;
+    border: 2px solid #000;
+    background: #7a92df;
+    user-select: none;
+    white-space: nowrap;
+    transition: all .05s linear;
+    font-family: inherit;
+    border-radius: 5px;
+    outline: none;
+   }
+   
+   #backBtn:before, #backBtn:after {
+    content: "";
+    position: absolute;
+    background: #7a92df;
+    transition: all .2s linear;
+   }
+   
+   #backBtn:before {
+    width: calc(100% + 6px);
+    height: calc(100% - 16px);
+    top: 8px;
+    left: -3px;
+   }
+   
+   #backBtn:after {
+    width: calc(100% - 16px);
+    height: calc(100% + 6px);
+    top: -3px;
+    left: 8px;
+   }
+   
+   #backBtn:hover {
+    cursor: pointer;
+   }
+   
+   #backBtn:active {
+    transform: scale(0.95);
+   }
+   
+   #backBtn:hover:before {
+    height: calc(100% - 32px);
+    top: 16px;
+   }
+   
+   #backBtn:hover:after {
+    width: calc(100% - 32px);
+    left: 16px;
+   }
+   
+   #backBtn span {
+    font-size: 15px;
+    z-index: 3;
+    position: relative;
+    font-weight: 600;
+   }
+  

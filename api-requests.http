@@ -1,0 +1,147 @@
+@api=https://taz.harding.edu/api
+
+@token=eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg2OTY5YWVjMzdhNzc4MGYxODgwNzg3NzU5M2JiYmY4Y2Y1ZGU1Y2UiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI5MjMxNjcxMzM0MjgtbmZzamdqcTgycDRncXFvY2E1aHRmcWdzbG1iaTZ1djkuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI5MjMxNjcxMzM0MjgtbmZzamdqcTgycDRncXFvY2E1aHRmcWdzbG1iaTZ1djkuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDI2NjM2Njg0ODMxMzYzMzIyOTUiLCJoZCI6ImhhcmRpbmcuZWR1IiwiZW1haWwiOiJmdmlkZXNhZ3VpbGFyQGhhcmRpbmcuZWR1IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5vbmNlIjoiYjUyYmQzMjAtZTcwOC00Nzg0LTk0MjEtYzI0MmFjYWVlZmE4IiwibmFtZSI6IkZlcm5hbmRvIFZpZGVzIEFndWlsYXIiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4WlN1dHg2MUJMOTIyV3BCZGJyMjRPYlBIRjUyR0xxQ0dTbkQ0eTI9czk2LWMiLCJnaXZlbl9uYW1lIjoiRmVybmFuZG8iLCJmYW1pbHlfbmFtZSI6IlZpZGVzIEFndWlsYXIiLCJsb2NhbGUiOiJlbiIsImlhdCI6MTY4MjY2OTY5MywiZXhwIjoxNjgyNjczMjkzLCJqdGkiOiJkYjYzNDE1NjVlNGEwOGY2MWQ5OGM1MTI0MWU0YjFkNGE3OTJmMjMyIn0.yo8VTR7-eLbUN_Wtkih-xKhhOz5tBCXuDfxp5g1b8H5SQjDWxd-uR4VFLtlplMMjiesXxuQRPiKUtNKXhePU02yN76t_RU4ihS2lqWt_-CvYxA7pdmZlnmwp9oMnUGcJSv3riI9mWQJ738e0pwrRr6M-bzffDbPpy2LBhauiaNRT4itD5j-97ExsVHt7vIEKbc2ur3VpdVML2nrGTCdNoI7cUt7RoVHEY9UEl6bENrYmhRkxdwFaVdXx24N8SnQfobihzHWZBygUbO007KNK2mWtsqTLnyzODyFQMpzB_O7o0q4FUG27CtzS0hxBtoN3m2RE0yk_dQwPF1k6PcFT9Q
+// used for any endpoints that contain a question id
+@questionid=644b062cc458f2ea5accd206
+
+// used for any endpoints that contain an answer id
+@answerid=id-of-answer
+
+// used for like endpoints
+@postid=644ab0f7c458f2ea5ac47d79
+
+// used for like endpoints
+@user=mtercero1
+
+###
+# GET USER INFO
+GET {{api}}/user
+Authorization: Bearer {{token}}
+
+
+############################################################
+#                         QUESTIONS
+############################################################
+
+###
+# GET ALL QUESTIONS
+GET {{api}}/questions?start=1
+Authorization: Bearer {{token}}
+
+
+###
+# GET ONE QUESTION
+GET {{api}}/questions/{{questionid}}
+Authorization: Bearer {{token}}
+
+
+###
+# CREATE QUESTION
+POST {{api}}/questions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "author": "mtercero1",
+  "summary": "... I forgot I needed 10",
+  "contents": "Posting a question from .http2"
+}
+
+
+###
+# UPDATE QUESTION
+PUT {{api}}/questions/{{questionid}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "summary": "How lazy can you get?",
+  "contents": "I'm still using the default question!"
+}
+
+
+###
+# DELETE QUESTION
+DELETE {{api}}/questions/{{questionid}}
+Authorization: Bearer {{token}}
+
+
+###
+# RESTORE QUESTION
+POST {{api}}/questions/{{questionid}}
+Authorization: Bearer {{token}}
+
+
+############################################################
+#                          ANSWERS
+############################################################
+
+###
+# GET ALL ANSWERS
+GET {{api}}/questions/{{questionid}}/answers?start=1
+Authorization: Bearer {{token}}
+
+
+###
+# GET ONE ANSWER
+GET {{api}}/answers/{{answerid}}
+Authorization: Bearer {{token}}
+
+
+###
+# CREATE ANSWER
+POST {{api}}/questions/{{questionid}}/answers
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "author": "gfoust",
+  "contents": "I was lazy and just used the default answer!"
+}
+
+
+###
+# UPDATE ANSWER
+PUT {{api}}/answers/{{answerid}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "contents": "I'm still using the default answer!"
+}
+
+
+###
+# DELETE ANSWER
+DELETE {{api}}/answers/{{answerid}}
+Authorization: Bearer {{token}}
+
+
+###
+# RESTORE ANSWER
+POST {{api}}/answers/{{answerid}}
+Authorization: Bearer {{token}}
+
+
+############################################################
+#                           LIKES
+############################################################
+
+###
+# GET ALL LIKES
+GET {{api}}/likes/{{postid}}
+
+
+###
+# GET ONE LIKE
+GET {{api}}/likes/{{postid}}/{{user}}
+
+
+###
+# CREATE LIKE
+POST {{api}}/likes/{{postid}}/{{user}}
+
+
+###
+# DELETE LIKE
+DELETE {{api}}/likes/{{postid}}/{{user}}
